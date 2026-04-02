@@ -88,8 +88,7 @@ function App() {
       )
       setTasks((currentTasks) => moveTask(currentTasks, taskId, previousStatus))
       showToast(
-        `Couldn't move "${task.title}" to ${
-          BOARD_COLUMNS.find((column) => column.id === nextStatus)?.title
+        `Couldn't move "${task.title}" to ${BOARD_COLUMNS.find((column) => column.id === nextStatus)?.title
         }. The board rolled back to keep things consistent.`,
       )
       console.error(error)
@@ -121,23 +120,7 @@ function App() {
       <header className="hero">
         <p className="eyebrow">Optimistic UI demo</p>
         <h1>Kanban board with instant moves and safe rollback</h1>
-        <p className="hero-copy">
-          Drag a task into a new lane and the card moves immediately. A mock API
-          responds after 1.5 seconds and intentionally fails 20% of the time, so
-          we can prove the rollback experience feels smooth.
-        </p>
       </header>
-
-      <section className="status-banner" aria-label="Board behavior summary">
-        <div>
-          <strong>Optimistic first:</strong> UI updates on drop, not on server
-          response.
-        </div>
-        <div>
-          <strong>Failure aware:</strong> a random API error returns the task to
-          its original column and shows a toast.
-        </div>
-      </section>
 
       <DndContext
         sensors={sensors}
@@ -217,17 +200,16 @@ function TaskCard({ task, isPending, onMove }) {
 
   const style = transform
     ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-      }
+      transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+    }
     : undefined
 
   return (
     <article
       ref={setNodeRef}
       style={style}
-      className={`card ${isDragging ? 'card--dragging' : ''} ${
-        isPending ? 'card--pending' : ''
-      }`}
+      className={`card ${isDragging ? 'card--dragging' : ''} ${isPending ? 'card--pending' : ''
+        }`}
       {...listeners}
       {...attributes}
     >
